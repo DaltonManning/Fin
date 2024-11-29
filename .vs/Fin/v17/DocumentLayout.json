@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gl8152\\OneDrive - DuPont\\Desktop\\LastOneCBOpenIf\\Fin\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4EBBC416-7038-4AE0-9A78-89A17A92C8F5}|Fin.csproj|c:\\users\\gl8152\\onedrive - dupont\\desktop\\lastonecbopenif\\fin\\diagraminstancesub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EBBC416-7038-4AE0-9A78-89A17A92C8F5}|Fin.csproj|solutionrelative:diagraminstancesub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EBBC416-7038-4AE0-9A78-89A17A92C8F5}|Fin.csproj|c:\\users\\gl8152\\onedrive - dupont\\desktop\\lastonecbopenif\\fin\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EBBC416-7038-4AE0-9A78-89A17A92C8F5}|Fin.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DiagramInstanceSub.cs",
+              "DocumentMoniker": "C:\\Users\\gl8152\\OneDrive - DuPont\\Desktop\\LastOneCBOpenIf\\Fin\\DiagramInstanceSub.cs",
+              "RelativeDocumentMoniker": "DiagramInstanceSub.cs",
+              "ToolTip": "C:\\Users\\gl8152\\OneDrive - DuPont\\Desktop\\LastOneCBOpenIf\\Fin\\DiagramInstanceSub.cs",
+              "RelativeToolTip": "DiagramInstanceSub.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAqwHUAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T14:08:21.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{57d563b6-44a5-47df-85be-f4199ad6b651}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gl8152\\OneDrive - DuPont\\Desktop\\LastOneCBOpenIf\\Fin\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\gl8152\\OneDrive - DuPont\\Desktop\\LastOneCBOpenIf\\Fin\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T23:33:08.6Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

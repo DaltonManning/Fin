@@ -1,0 +1,73 @@
+  // Find all <Diagram> nodes
+ XmlNodeList DiagramNodes = xmlDoc.GetElementsByTagName("Diagram");
+ 
+ foreach (XmlNode node in DiagramNodes)
+ {
+     // Get the Name and Type attributes
+     XmlAttribute nameAttribute = node.Attributes["Name"];
+    
+
+     if (nameAttribute != null)
+     {
+        
+         try
+         {
+             // Call GetDiagramType for each Type
+             string diagramTypeData = cb.GetDiagramType(nameAttribute.Value); // Fetch the diagram type
+
+             // Save this data to its own XML file in xmlContainer
+             string fileName = $"{typeAttribute.Value.Replace('.', '_')}.xml"; // Create a filename
+             string filePath = Path.Combine(outputDirectory, fileName); // Path to xmlContainer
+             XmlDocument diagramDoc = new XmlDocument();
+             diagramDoc.LoadXml(diagramTypeData); // Load the data into a new XmlDocument
+             diagramDoc.Save(filePath); // Save the diagram type XML to file
+
+             Console.WriteLine($"Saved type data to: {filePath}");
+
+             // Import the diagram type data into the combined XML document
+             XmlNode importedCombinedNode = combinedTypesDoc.ImportNode(diagramDoc.DocumentElement, true);
+             combinedRoot.AppendChild(importedCombinedNode); // Append to combined types document
+         }
+         catch (Exception ex)
+         {
+             // Log the error and continue with the next iteration
+             Console.WriteLine($"Error fetching diagram type for '{typeAttribute.Value}': {ex.Message}");
+         }
+     }
+
+     // Import the original node to the output document
+     XmlNode importedNode = outputDoc.ImportNode(node, true);
+     root.AppendChild(importedNode);
+ }
+
+
+ csharp
+using System;
+using System.Xml;
+
+class Program
+{
+    static void Main()
+    {
+        // Load the XML document
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.Load("path/to/your/file.xml"); // Make sure to specify the correct path
+
+        // Specify the attribute name
+        string attributeName = "daltonismyname";
+
+        // Use XPath to find the node with the specified attribute
+        XmlNode selectedNode = xmlDoc.SelectSingleNode($"//*[@{attributeName}]");
+
+        // Check if a node was found and print it out
+        if (selectedNode != null)
+        {
+            Console.WriteLine("Node found:");
+            Console.WriteLine(selectedNode.OuterXml); // This includes the node and all its descendants
+        }
+        else
+        {
+            Console.WriteLine("Node with the specified attribute not found.");
+        }
+    }
+}

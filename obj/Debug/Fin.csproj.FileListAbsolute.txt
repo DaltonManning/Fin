@@ -1,0 +1,11 @@
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\bin\Debug\Fin.exe.config
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\bin\Debug\Fin.exe
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\bin\Debug\Fin.pdb
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\obj\Debug\Fin.csproj.AssemblyReference.cache
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\obj\Debug\Interop.CBOpenIFHelper.dll
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\obj\Debug\Interop.CONTROLBUILDERLib.dll
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\obj\Debug\Interop.Office.dll
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\obj\Debug\Fin.csproj.ResolveComReference.cache
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\obj\Debug\Fin.csproj.CoreCompileInputs.cache
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\obj\Debug\Fin.exe
+C:\Users\gl8152\OneDrive - DuPont\Desktop\LastOneCBOpenIf\Fin\obj\Debug\Fin.pdb
