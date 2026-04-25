@@ -1,51 +1,87 @@
-﻿using CBOpenIFHelper;
 using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using Fin.Extractors;
 
 namespace Fin
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
-        {
-            //Create a new instance of the project downloader
-            DiagramInstance getXML = new DiagramInstance();
-             try
+        private static readonly Dictionary<string, Func<IExtractor>> Available =
+            new Dictionary<string, Func<IExtractor>>(StringComparer.OrdinalIgnoreCase)
             {
-               getXML.GetAllDiagrams();
+                { "tree",         () => new ProjectTreeExtractor() },
+                { "diagrams",     () => new DiagramExtractor() },
+                { "hardware",     () => new HardwareExtractor() },
+                { "applications", () => new ApplicationExtractor() },
+            };
+
+        private static int Main(string[] args)
+        {
+            var selected = Resolve(args);
+            if (selected == null)
+            {
+                PrintUsage();
+                return 1;
             }
-            catch (Exception ex)
-             {
-                Console.WriteLine(ex.Message);
+
+            Log.Info($"Output directory: {Paths.Root}");
+
+            try
+            {
+                using (var session = new ControlBuilderSession())
+                {
+                    foreach (var extractor in selected)
+                    {
+                        Log.Info($"=== {extractor.Name} ===");
+                        try
+                        {
+                            extractor.Run(session);
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error($"Extractor '{extractor.Name}' failed", ex);
+                        }
+                    }
+                }
             }
-            getXML.ExtractFDCodeBlocksFromDiagramsFile();
+            catch (COMException ex)
+            {
+                Log.Error("Could not initialize Control Builder. Is it installed and is a project open?", ex);
+                return 2;
+            }
 
+            Log.Info("Done.");
+            return 0;
+        }
 
-            // Create an instance of HWExtractor
-            //HWExtractor hwextractor = new HWExtractor();
+        private static List<IExtractor> Resolve(string[] args)
+        {
+            if (args.Length == 0 || args.Any(a => a.Equals("all", StringComparison.OrdinalIgnoreCase)))
+                return Available.Values.Select(f => f()).ToList();
 
-            // Call GetAllHardware 
-            //hwextractor.GetAllHardware();
-            //Console.WriteLine("Process complete. Press any key to exit.");
-            Console.ReadKey();
+            var result = new List<IExtractor>();
+            foreach (var arg in args)
+            {
+                if (!Available.TryGetValue(arg, out var factory))
+                {
+                    Console.Error.WriteLine($"Unknown extractor: {arg}");
+                    return null;
+                }
+                result.Add(factory());
+            }
+            return result;
+        }
 
-
-
-
-
-
-            // Specify the path to the directory containing compressed XML files
-            //string inputDirectory = @"C:\Users\gl8152\OneDrive - DuPont\Desktop\Tasks Weekly\Tasks-11-19-2024\ABB Industrial IT Data\Engineer IT Data\Control Builder M Professional\Projects\CopolyProject";
-
-            // Optionally, specify an output directory; here it creates a "DecompressedFiles" folder in the input directory
-            //string outputDirectory = Path.Combine(inputDirectory, "DecompressedFiles");
-
-            // Create the output directory if it doesn't exist
-            //Directory.CreateDirectory(outputDirectory);
-
-            // Create an instance of XmlDecompressor for the specified directory and call the DecompressAll method
-            //XmlDecompressor decompressor = new XmlDecompressor(inputDirectory, outputDirectory);
-            //decompressor.DecompressAll();
+        private static void PrintUsage()
+        {
+            Console.WriteLine("Usage: Fin [extractor ...]");
+            Console.WriteLine();
+            Console.WriteLine("Extractors:");
+            foreach (var name in Available.Keys)
+                Console.WriteLine($"  {name}");
+            Console.WriteLine("  all  (default when no args — runs every extractor)");
         }
     }
 }

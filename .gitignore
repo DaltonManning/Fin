@@ -1,0 +1,19 @@
+# Build outputs
+bin/
+obj/
+
+# NuGet restored packages (declared in packages.config)
+packages/
+
+# Visual Studio / VS Code state
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Claude Code session state
+.claude/
+
+# Runtime logs and output written by Fin.exe
+Fin_*.log
+output/
